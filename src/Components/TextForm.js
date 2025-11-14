@@ -13,10 +13,38 @@ export default function TextForm(props) {
         setText(newText)
     }
 
+    const handleAlternating = ()=>{
+        const newText = text
+        .split('')
+        .map((char,index)=>{
+                            if(index %2 === 0)
+                            {
+                                return char.toUpperCase();
+                            }
+                            else{
+                                    return char.toLowerCase();
+                                }
+                    }).join('');
+        setText(newText);
+
+    }
+//     const handleAlternating = () => {
+//   const newText = text
+//     .split('')
+//     .map((char, index) =>
+//       index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
+//     )
+//     .join('');
+
+//   setText(newText);
+// };
+
+
     const handleClearChange = ()=>{
         let newText = '';
         setText(newText)
     }
+
 
     const handleOnChange = (event)=>{
        // console.log("On Change");
@@ -36,6 +64,7 @@ export default function TextForm(props) {
                 </div>
                 <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert To Upper Case</button>
                 <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert To Lower Case</button>
+                <button className="btn btn-primary mx-2" onClick={handleAlternating}>Convert To Alternating Text</button>
                 <button className="btn btn-primary mx-2" onClick={handleClearChange}>Clear Text</button>
 
             </div>
